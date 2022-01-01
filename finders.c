@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#define _USE_MATH_DEFINES
+#include <math.h>
 #include <limits.h>
 #include <float.h>
 #include <math.h>
@@ -1541,8 +1543,8 @@ int isViableEndCityTerrain(const EndNoise *en, const SurfaceNoise *sn,
     int cellx = (blockX >> 3);
     int cellz = (blockZ >> 3);
     // TODO: make sure upper bound is ok
-    enum { y0 = 15, y1 = 18, yn = y1-y0+1 };
-    double ncol[3][3][yn];
+    const int y0 = 15, y1 = 18; // only check range that could yield h >= 60
+    double ncol[3][3][4];
 
     sampleNoiseColumnEnd(ncol[0][0], sn, en, cellx, cellz, y0, y1);
     sampleNoiseColumnEnd(ncol[0][1], sn, en, cellx, cellz+1, y0, y1);

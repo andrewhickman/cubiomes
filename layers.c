@@ -1047,12 +1047,11 @@ int getSurfaceHeightEnd(int mc, uint64_t seed, int x, int z)
     double dx = (x & 7) / 8.0;
     double dz = (z & 7) / 8.0;
 
-    // abusing enum for local compile time constants rather than enumeration
-    enum { y0 = 0, y1 = 32, yn = y1-y0+1 };
-    double ncol00[yn];
-    double ncol01[yn];
-    double ncol10[yn];
-    double ncol11[yn];
+    const int y0 = 0, y1 = 32, yn = y1-y0+1;
+    double ncol00[33];
+    double ncol01[33];
+    double ncol10[33];
+    double ncol11[33];
     sampleNoiseColumnEnd(ncol00, &sn, &en, cellx, cellz, y0, y1);
     sampleNoiseColumnEnd(ncol01, &sn, &en, cellx, cellz+1, y0, y1);
     sampleNoiseColumnEnd(ncol10, &sn, &en, cellx+1, cellz, y0, y1);

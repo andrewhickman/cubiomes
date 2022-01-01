@@ -5,6 +5,10 @@
 #include "generator.h"
 
 
+#ifndef __GNUC__
+#define  __attribute__(x)
+#endif
+
 #ifdef __cplusplus
 extern "C"
 {
